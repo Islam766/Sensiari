@@ -43,7 +43,7 @@ async def start(bot, message):
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
     usr_cmdall1 = message.text
-    if usr_cmdall1.startswith("/start zautekm"):
+    if usr_cmdall1.startswith("/start islam555_bot"):
         if AUTH_CHANNEL:
             invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
             try:
@@ -51,7 +51,7 @@ async def start(bot, message):
                 if user.status == "kicked":
                     await bot.send_message(
                         chat_id=message.from_user.id,
-                        text="Sorry Sir, You are Banned to use me.",
+                        text="Извините, сэр, вам запрещено использовать меня.",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -60,14 +60,14 @@ async def start(bot, message):
                 ident, file_id = message.text.split("_-_-_-_")
                 await bot.send_message(
                     chat_id=message.from_user.id,
-                    text="**Please Join My Updates Channel to use this Bot!**",
+                    text="**Пожалуйста, присоединяйтесь к моему каналу обновлений, чтобы использовать этого бота!**",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("📢 Join Updates Channel 📢", url=invite_link.invite_link)
+                                InlineKeyboardButton("📢 Присоединяйтесь к каналу обновлений 📢", url=invite_link.invite_link)
                             ],
                             [
-                                InlineKeyboardButton("🔄 Try Again", callback_data=f"checksub#{file_id}")
+                                InlineKeyboardButton("🔄 Попробовать снова", callback_data=f"checksub#{file_id}")
                             ]
                         ]
                     ),
@@ -99,11 +99,11 @@ async def start(bot, message):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('search', switch_inline_query_current_chat=''),
-                        InlineKeyboardButton('channel', url='https://t.me/ZoSeriesStudio')
+                        InlineKeyboardButton('поиск', switch_inline_query_current_chat=''),
+                        InlineKeyboardButton('канал', url='https://t.me/TeamBORZ95')
                     ],
                     [
-                        InlineKeyboardButton('developer @zautekm', url=f'{DEV_CHANNEL}')
+                        InlineKeyboardButton('разработчик @isIam07', url=f'{DEV_CHANNEL}')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -118,11 +118,11 @@ async def start(bot, message):
         invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
         await bot.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel to use this Bot!**",
+            text="**Пожалуйста, присоединяйтесь к моему каналу обновлений, чтобы использовать этого бота!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Join Updates Channel 📢", url=invite_link.invite_link)
+                        InlineKeyboardButton("🤖 Присоединяйтесь к каналу обновлений 📢", url=invite_link.invite_link)
                     ]
                 ]
             )
@@ -134,13 +134,13 @@ async def start(bot, message):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [[
-                InlineKeyboardButton("search", switch_inline_query_current_chat=''),
+                InlineKeyboardButton("поиск", switch_inline_query_current_chat=''),
                 InlineKeyboardButton("go inline", switch_inline_query='')
                 ],[
-                InlineKeyboardButton("help", callback_data="help"),
+                InlineKeyboardButton("помощь", callback_data="help"),
                 InlineKeyboardButton("about", callback_data="about")
                 ],[
-                InlineKeyboardButton("more bots @josprojects 🤖", url="https://t.me/JosProjects")
+                InlineKeyboardButton("больше ботов @isIam07 🤖", url="https://t.me/isIam03_bot")
                 ]]
             )
         )
@@ -193,7 +193,7 @@ async def sts(c, m):
         await m.delete()
         return
     await m.reply_text(
-        text=f"**Total Users in Database 📂:** `{await db.total_users_count()}`\n\n**Total Users with Notification Enabled 🔔 :** `{await db.total_notif_users_count()}`",
+        text=f"**Всего пользователей в базе данных 📂:** `{await db.total_users_count()}`\n\n**Всего пользователей с включенным уведомлением 🔔 :** `{await db.total_notif_users_count()}`",
         parse_mode="Markdown",
         quote=True
     )
@@ -206,7 +206,7 @@ async def ban(c, m):
         return
     if len(m.command) == 1:
         await m.reply_text(
-            f"Use this command to ban 🛑 any user from the bot 🤖.\n\nUsage:\n\n`/ban user_id ban_duration ban_reason`\n\nEg: `/ban 1234567 28 You misused me.`\n This will ban user with id `1234567` for `28` days for the reason `You misused me`.",
+            f"Используйте эту команду, чтобы забанить 🛑 любой пользователь из бота 🤖.\n\nUsage:\n\n`/ban user_id ban_duration ban_reason`\n\nEg: `/ban 1234567 28 You misused me.`\n This will ban user with id `1234567` for `28` days for the reason `You misused me`.",
             quote=True,
         )
         return
@@ -220,13 +220,13 @@ async def ban(c, m):
         try:
             await c.send_message(
                 user_id,
-                f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**",
+                f"Вам запрещено 🚫 использовать этого бота для **{ban_duration}** day (s) for the reason __{ban_reason}__ \n\n**Сообщение от админа 🤠**",
             )
-            ban_log_text += "\n\nUser notified successfully!"
+            ban_log_text += "\n\nПользователь успешно уведомлен!"
         except BaseException:
             traceback.print_exc()
             ban_log_text += (
-                f"\n\n ⚠️ User notification failed! ⚠️ \n\n`{traceback.format_exc()}`"
+                f"\n\n ⚠️ Уведомление пользователя не удалось! ⚠️ \n\n`{traceback.format_exc()}`"
             )
         await db.ban_user(user_id, ban_duration, ban_reason)
         print(ban_log_text)
@@ -234,7 +234,7 @@ async def ban(c, m):
     except BaseException:
         traceback.print_exc()
         await m.reply_text(
-            f"Error occoured ⚠️! Traceback given below\n\n`{traceback.format_exc()}`",
+            f"Возникла ошибка ⚠️! Прослеживание приведено ниже\n\n`{traceback.format_exc()}`",
             quote=True
         )
 
@@ -246,7 +246,7 @@ async def unban(c, m):
         return
     if len(m.command) == 1:
         await m.reply_text(
-            f"Use this command to unban 😃 any user.\n\nUsage:\n\n`/unban user_id`\n\nEg: `/unban 1234567`\n This will unban user with id `1234567`.",
+            f"Используйте эту команду, чтобы разблокировать любого пользователя 😃 .\n\nUsage:\n\n`/unban user_id`\n\nEg: `/unban 1234567`\n Это разблокирует пользователя с идентификатором `1234567`.",
             quote=True,
         )
         return
